@@ -1,4 +1,4 @@
-"""Unit tests for module anagrams"""
+"""--Unit tests for module anagrams--"""
 from unittest import TestCase, main
 from anagrams.anagrams import get_anagram
 

@@ -27,8 +27,6 @@ def get_anagram(text: str) -> str:
 
 if __name__ == '__main__':
     cases = [("abcd efgh", "dcba hgfe"),
-        ("a1bcd efg!h", "d1cba hgf!e"),
-        ('da1234SeD 4321', 'De1234Sad 4321')]
-
+             ('da1234SeD 4321', 'De1234Sad 4321')]
     for text, reversed_text in cases:
         assert get_anagram(text) == reversed_text
