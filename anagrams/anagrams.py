@@ -1,6 +1,8 @@
 """This is the first task of the Clean Code module"""
+from functools import lru_cache
 
 
+@lru_cache(typed=True, maxsize=1024)
 def get_anagram(text: str) -> str:
     """
     Function to create anagrams
