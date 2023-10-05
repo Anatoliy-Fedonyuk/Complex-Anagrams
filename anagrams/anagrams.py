@@ -5,7 +5,8 @@ from functools import lru_cache
 @lru_cache(typed=True, maxsize=1024)
 def get_anagram(text: str) -> str:
     """
-    Function to create anagrams
+    Function to create complex anagrams with use Lru cache and
+    handling of all exceptions that arise
     :param text: string input
     :return: string
     """
