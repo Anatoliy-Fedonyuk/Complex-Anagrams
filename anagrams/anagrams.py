@@ -2,7 +2,7 @@
 from functools import lru_cache
 
 
-@lru_cache(typed=True, maxsize=1024)
+@lru_cache(maxsize=1024)
 def get_anagram(text: str) -> str:
     """
     Function to create complex anagrams with use Lru cache and

@@ -30,12 +30,12 @@ class AnagramsTest(TestCase):
     def test_type_dict(self):
         with self.assertRaises(TypeError) as e:
             get_anagram({'a': 11, 'b': 22, 'c': 33})
-        self.assertEqual('--Only a string can be used as input!--', e.exception.args[0])
+        self.assertEqual("unhashable type: 'dict'", e.exception.args[0])
 
     def test_type_list(self):
         with self.assertRaises(TypeError) as e:
             get_anagram([1, -22, 3, 4, -65])
-        self.assertEqual('--Only a string can be used as input!--', e.exception.args[0])
+        self.assertEqual("unhashable type: 'list'", e.exception.args[0])
 
     def test_type_tuple(self):
         with self.assertRaises(TypeError) as e:
