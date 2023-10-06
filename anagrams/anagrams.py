@@ -33,3 +33,4 @@ if __name__ == '__main__':
              ('da1234SeD 4321', 'De1234Sad 4321')]
     for text, reversed_text in cases:
         assert get_anagram(text) == reversed_text
+        print("Assertion - is True")
