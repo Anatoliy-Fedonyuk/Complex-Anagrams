@@ -1,35 +1,21 @@
-#[build-system]
-#requires = ["setuptools>=61.0"]
-#build-backend = "setuptools.build_meta"
-#
-#[project]
-#name = "Complex Anagrams"
-#version = "1.0.0"
-#authors = [
-#  { name="Fedonyuk Anatoliy", email="dekorstyle0@gmail.com" },
-#]
-#description = "This is a small program for creating Complex Anagrams from individual strings and entire text fragments"
-#readme = "README.md"
-#requires-python = ">=3.10"
-#classifiers = [
-#    "Programming Language :: Python :: 3",
-#    "License :: OSI Approved :: MIT License",
-#    "Operating System :: OS Independent",
-#]
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry]
+[project]
 name = "Complex Anagrams"
 version = "1.0.0"
+authors = [
+    { name = "Fedonyuk Anatoliy", email = "dekorstyle0@gmail.com" },
+]
 description = "This is a small program for creating Complex Anagrams from individual strings and entire text fragments"
-authors = ["Fedonyuk Anatoliy <dekorstyle0@gmail.com>"]
-license = "MIT"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.dependencies]
-python = "^3.10"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/Anatoliy-Fedonyuk/Complex-Anagrams"
