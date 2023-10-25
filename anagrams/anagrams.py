@@ -2,9 +2,7 @@
 from functools import lru_cache
 from loguru import logger
 
-
 logger.add('debug.log', format='{time} {level} {message}', level='DEBUG')
-logger.info(f"[INFO] Start working application {__name__} !")
 
 
 @lru_cache(maxsize=1024)
@@ -37,12 +35,16 @@ def get_anagram(text: str) -> str:
         return ' '.join(reversed_w)
     except Exception as e:
         logger.error(f"[ERROR] Unexpected error occurred: {e}")
-        raise # Re-raise the exception for further handling
+        raise  # Re-raise the exception for further handling
 
 
 if __name__ == '__main__':
+    logger.info("[INFO] Start working application !")
     cases = [("abcd efgh", "dcba hgfe"),
-             ('da1234SeD 4321', 'De1234Sad 4321')]
+             ('da1234SeD 4321', 'De1234Sad 4321'),
+             ("Anatol12 !read$$$$$ 0 das bot33.33", "lotanA12 !daer$$$$$ 0 sad tob33.33"),
+             ("12345 !@#$", "12345 !@#$"),
+             ("c!2784!d", "d!2784!c")]
     for text, reversed_text in cases:
         assert get_anagram(text) == reversed_text
-        print("Assertion - is True")
+    logger.info("[INFO] All Assertion - is True !")

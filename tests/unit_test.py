@@ -20,7 +20,7 @@ class AnagramsTest(TestCase):
     def test_empty_string(self):
         with self.assertRaises(ValueError) as e:
             get_anagram("")
-        self.assertEqual('--Anagram do not make sense, string empty--', e.exception.args[0])
+        self.assertEqual('--Anagram do not make sense, string is empty--', e.exception.args[0])
 
     def test_type_number(self):
         with self.assertRaises(TypeError) as e:
