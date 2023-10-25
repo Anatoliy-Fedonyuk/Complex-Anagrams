@@ -1,5 +1,6 @@
-"""This is the first task of the Clean Code module"""
+"""This file is the entry point application Complex Anagrams"""
 from functools import lru_cache
+from loguru import logger
 
 
 @lru_cache(maxsize=1024)
