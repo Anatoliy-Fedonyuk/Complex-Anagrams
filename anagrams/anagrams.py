@@ -1,5 +1,8 @@
-"""This is the first task of the Clean Code module"""
+"""This file is the entry point application Complex Anagrams"""
 from functools import lru_cache
+from loguru import logger
+
+logger.add('debug.log', format='{time} {level} {message}', level='DEBUG')
 
 
 @lru_cache(maxsize=1024)
@@ -10,27 +13,38 @@ def get_anagram(text: str) -> str:
     :param text: string input
     :return: string
     """
-    if not isinstance(text, str):
-        raise TypeError('--Only a string can be used as input!--')
-    if text == "":
-        raise ValueError('--Anagram do not make sense, string empty--')
-    words = text.split()
-    if all(w.isdigit() for w in words):
-        raise ValueError('--Anagram do not make sense in your string only digits--')
-    reversed_w = []
-    for word in words:
-        no_letter = [(i, ch) for i, ch in enumerate(word) if not ch.isalpha()]
-        word = "".join(ch for ch in word if ch.isalpha())
-        revers = word[::-1]
-        for i, ch in no_letter:
-            revers = f'{revers[:i]}{ch}{revers[i:]}'
-        reversed_w.append(revers)
-    return ' '.join(reversed_w)
+    try:
+        if not isinstance(text, str):
+            logger.error("[ERROR] TypeError - only a string is expected.")
+            raise TypeError('--Only a string can be used as input!--')
+        if text == "":
+            logger.error("[ERROR] ValueError - a string is empty.")
+            raise ValueError('--Anagram do not make sense, string is empty--')
+        words = text.split()
+        if all(w.isdigit() for w in words):
+            logger.error("[ERROR] ValueError - a string is empty.")
+            raise ValueError('--Anagram do not make sense in your string only digits--')
+        reversed_w = []
+        for word in words:
+            no_letter = [(i, ch) for i, ch in enumerate(word) if not ch.isalpha()]
+            word = "".join(ch for ch in word if ch.isalpha())
+            revers = word[::-1]
+            for i, ch in no_letter:
+                revers = f'{revers[:i]}{ch}{revers[i:]}'
+            reversed_w.append(revers)
+        return ' '.join(reversed_w)
+    except Exception as e:
+        logger.error(f"[ERROR] Unexpected error occurred: {e}")
+        raise  # Re-raise the exception for further handling
 
 
 if __name__ == '__main__':
+    logger.info("[INFO] Start working application !")
     cases = [("abcd efgh", "dcba hgfe"),
-             ('da1234SeD 4321', 'De1234Sad 4321')]
+             ('da1234SeD 4321', 'De1234Sad 4321'),
+             ("Anatol12 !read$$$$$ 0 das bot33.33", "lotanA12 !daer$$$$$ 0 sad tob33.33"),
+             ("12345 !@#$", "12345 !@#$"),
+             ("c!2784!d", "d!2784!c")]
     for text, reversed_text in cases:
         assert get_anagram(text) == reversed_text
-        print("Assertion - is True")
+    logger.info("[INFO] All Assertion - is True !")
